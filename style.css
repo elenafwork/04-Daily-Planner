@@ -6,6 +6,11 @@ body {
   margin-bottom:10px;
 }
 
+#save-message{
+  font-size: small;
+  color:green;
+  text-align: center;
+}
 textarea {
   background: transparent;
   border: none;
