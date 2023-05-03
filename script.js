@@ -3,8 +3,10 @@ var plannerContainer=$('.container-lg');
 var currentHour=dayjs().format('H');
 var currentMin=dayjs().format('m');
 var currentSecond =dayjs().format('s');
+//var saveMessage=$('#save-message').text('Saved to LocalStorage!');
+
 for (var i=9; i<=17;i++){
-  $('#save-message').attr('display', 'none');
+ 
   //var currentHour=dayjs().format('H');
   var divHourId=$('#hour-'+i);
   var textarea=divHourId.children('.description')
@@ -23,13 +25,15 @@ $(function () {
   //Add a listener for click events on the save button. 
   
   $(".saveBtn").on("click", function(){
-    
+    // message 'saved!' will appear for 1s on the top 
+    var saveMessage=$('#save-message').text('Saved to LocalStorage!'); 
+    setTimeout(function(){saveMessage.text('  ')}, 1000);
    var hour = $(this).parent().attr('id');
    console.log("event " + hour);
    var taskInput=$(this).siblings(".description").val();
    console.log(taskInput);
    localStorage.setItem(hour, taskInput);
-   $('#save-message').attr('display', 'block');
+   
    console.log(hour + "  hour id")
    var savedItem=$(this).siblings('.description');
    console.log(savedItem)
