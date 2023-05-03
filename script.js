@@ -23,8 +23,8 @@ $(function () {
   })
    //loading page with saved items /in localStorage
   var currentHour=dayjs().hour();
-  var currentMin=dayjs().minute();
-  var currentSecond =dayjs().second();
+  //var currentMin=dayjs().minute();
+  //var currentSecond =dayjs().second();
   console.log(currentHour);
   for (var i=9; i<=18;i++){
     var divHourId=$('#hour-'+i);
@@ -40,13 +40,13 @@ $(function () {
       divHourId.addClass("future");
     }
     
-  }  
-    
+  }
+     
   // Add code to display the current date in the header of the page.
     setInterval(function(){
     $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY hh:mm:ss a'));
   },1000)
-
+  
   
 });
 
