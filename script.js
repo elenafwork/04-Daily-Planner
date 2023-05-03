@@ -9,7 +9,7 @@ for (var i=9; i<=17;i++){
   var textarea=divHourId.children('.description')
   var savedItemId='hour-'+i;
   textarea.html(localStorage.getItem(savedItemId))
-  
+  //  Add code to apply the past, present, or future class to each time
   if (i==currentHour){
     divHourId.addClass("present");
   } else if(i<currentHour){
@@ -38,12 +38,10 @@ $(function () {
    console.log(savedItem)
    savedItem.html(localStorage.getItem(hour));
   })
- //  Add code to apply the past, present, or future class to each time
-  
+   
   var currentHour=dayjs().format('H');
   console.log(currentHour);
-  
-  
+    
   // Add code to display the current date in the header of the page.
     setInterval(function(){
     $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY hh:mm:ss a'));
