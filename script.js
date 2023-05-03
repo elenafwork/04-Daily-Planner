@@ -1,17 +1,15 @@
-//making hourly deviders for whole 24 hour
 var plannerContainer=$('.container-lg');
 var currentHour=dayjs().format('H');
 var currentMin=dayjs().format('m');
 var currentSecond =dayjs().format('s');
-//var saveMessage=$('#save-message').text('Saved to LocalStorage!');
 
+//loading page with saved items in localStorage
 for (var i=9; i<=17;i++){
- 
-  //var currentHour=dayjs().format('H');
   var divHourId=$('#hour-'+i);
   var textarea=divHourId.children('.description')
   var savedItemId='hour-'+i;
   textarea.html(localStorage.getItem(savedItemId))
+  
   if (i==currentHour){
     divHourId.addClass("present");
   } else if(i<currentHour){
@@ -19,6 +17,7 @@ for (var i=9; i<=17;i++){
   } else {
     divHourId.addClass("future");
   }
+  
 }  
 
 $(function () {
@@ -51,8 +50,11 @@ $(function () {
   },1000)
 });
 
-// reloading page, deleting everything then the next day starts
+//clear local storage after midnight
 if (currentHour=0 && currentMin== 0 && currentSecond== 0) {
-  $('<textarea>').html('  ');
-  localStorage.clear();
+  for (var i=9; i<=17; i++){
+  $('.description').html('  ');
+  var savedItemId='hour-'+i;
+  localStorage.removeItem(savedItemId);
+  }
 }
