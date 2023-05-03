@@ -3,23 +3,6 @@ var currentHour=dayjs().hour();
 var currentMin=dayjs().minute();
 var currentSecond =dayjs().second();
 console.log(currentHour);
-//loading page with saved items in localStorage
-for (var i=9; i<=17;i++){
-  var divHourId=$('#hour-'+i);
-  var textarea=divHourId.children('.description')
-  var savedItemId='hour-'+i;
-  textarea.html(localStorage.getItem(savedItemId))
-  //  Add code to apply the past, present, or future class to each time
-  if (i==currentHour){
-    divHourId.addClass("present");
-  } else if(i<currentHour){
-    divHourId.addClass("past");
-  } else {
-    divHourId.addClass("future");
-  }
-  
-}  
-
 $(function () {
   //Add a listener for click events on the save button. 
   
@@ -38,21 +21,32 @@ $(function () {
    console.log(savedItem)
    savedItem.html(localStorage.getItem(hour));
   })
-   
-  var currentHour=dayjs().format('H');
+   //loading page with saved items /in localStorage
+  var currentHour=dayjs().hour();
+  var currentMin=dayjs().minute();
+  var currentSecond =dayjs().second();
   console.log(currentHour);
+  for (var i=9; i<=18;i++){
+    var divHourId=$('#hour-'+i);
+    var textarea=divHourId.children('.description')
+    var savedItemId='hour-'+i;
+    textarea.html(localStorage.getItem(savedItemId))
+    //  Add code to apply the past, present, or future class to each time
+    if (i==currentHour){
+      divHourId.addClass("present");
+    } else if(i<currentHour){
+      divHourId.addClass("past");
+    } else {
+      divHourId.addClass("future");
+    }
+    
+  }  
     
   // Add code to display the current date in the header of the page.
     setInterval(function(){
     $('#currentDay').text(dayjs().format('dddd, MMMM D YYYY hh:mm:ss a'));
   },1000)
+
+  
 });
 
-//clear local storage after midnight
-if (currentHour=0 && currentMin== 0 && currentSecond== 0) {
-  for (var i=9; i<=17; i++){
-  $('.description').html('  ');
-  var savedItemId='hour-'+i;
-  localStorage.removeItem(savedItemId);
-  }
-}
