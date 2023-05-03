@@ -1,8 +1,8 @@
 var plannerContainer=$('.container-lg');
-var currentHour=dayjs().format('H');
-var currentMin=dayjs().format('m');
-var currentSecond =dayjs().format('s');
-
+var currentHour=dayjs().hour();
+var currentMin=dayjs().minute();
+var currentSecond =dayjs().second();
+console.log(currentHour);
 //loading page with saved items in localStorage
 for (var i=9; i<=17;i++){
   var divHourId=$('#hour-'+i);
