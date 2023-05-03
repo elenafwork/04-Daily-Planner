@@ -1,4 +1,4 @@
-# 04-Daily Planner
+# Daily Planner
 
 
 ## Description
